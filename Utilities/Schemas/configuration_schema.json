@@ -1,0 +1,203 @@
+{
+    "type": "object",
+    "properties": {
+        "consensus_settings": {
+            "type": "object",
+            "properties": {
+                "snowball": {
+                    "type": "object",
+                    "properties" : {
+                        "quorum_size": {
+                            "type": "number"
+                        },
+                        "sample_size": {
+                            "type": "number"
+                        },
+                        "decision_threshold": {
+                            "type": "number"
+                        }
+                    },
+                    "required": ["quorum_size", "sample_size", "decision_threshold"]
+                },
+                "glacier": {
+                    "type": "object",
+                    "properties": {
+                        "evidence_alpha": {"type": "number"},
+                        "evidence_alpha_2": {"type": "number"},
+                        "confidence_beta": {"type": "number"},
+                        "look_ahead": {"type": "number"},
+                        "query": {
+                            "type": "object",
+                            "properties": {
+                                "query_size": {
+                                    "type": "number"
+                                },
+                                "initial_query_size": {
+                                    "type": "number"
+                                },
+                                "query_multiplier": {
+                                    "type": "number"
+                                },
+                                "max_multiplier": {
+                                    "type": "number"
+                                }
+                            },
+                            "required": ["query_size", "initial_query_size", "query_multiplier", "max_multiplier"]
+                        }
+                    },
+                    "required": ["evidence_alpha", "evidence_alpha_2", "confidence_beta", "look_ahead"]
+                }
+            }
+        },
+        "distribution": {
+            "type": "object",
+            "properties": {
+                "yes": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "no": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "none": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                }
+            },
+            "required": ["yes", "no", "none"]
+        },
+        "byzantine_settings": {
+            "type": "object",
+            "properties": {
+                "total_size": {
+                    "type": "number"
+                },
+                "distribution": {
+                    "type": "object",
+                    "properties": {
+                        "honest": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        },
+                        "infantile": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        },
+                        "random": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        },
+                        "omniscient": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        }
+                    },
+                    "required": ["honest", "infantile", "random", "omniscient"]
+                }
+            },
+            "required": ["total_size", "distribution"]
+        },
+        "simulation_style": {
+            "oneOf": [
+                {
+                    "type": "string" ,
+                    "enum": ["Async"]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "Async": {
+                            "type": "object",
+                            "properties": {
+                                "chunks": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "Glauber": {
+                        "type": "object",
+                        "properties": {
+                            "update_rate": {
+                                "type": "number"
+                            },
+                            "maximum_iterations": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "wards": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "time_to_finality": {
+                        "type": "object",
+                        "properties": {
+                            "ttf_threshold": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "stabilised" : {
+                        "type": "object",
+                        "properties": {
+                            "rounds": {
+                                "type" : "number"
+                            }
+                        }
+                    },
+                    "converged": {
+                        "type": "object",
+                        "properties": {
+                            "ratio": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                            }
+                        }
+                    }
+                }
+            },
+            "minItems": 1
+        },
+        "network_modifiers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "random_drop": {
+                        "type": "object",
+                        "properties": {
+                            "drop_rate": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                            }
+                        }
+                    }
+                }
+            },
+            "minItems": 0
+        },
+        "seed": {
+            "type": "number"
+        }
+    },
+    "required": ["consensus_settings", "distribution", "byzantine_settings", "seed"],
+    "additionalProperties": false
+}
