@@ -2,9 +2,9 @@
 import os.path
 
 # Project Imports
-from Utilities.Files.SimulationDataTypes.JsonDataSimulationHandler import JsonDataSimulationHandler
-from Utilities.Files.SimulationDataTypes.CsvDataSimulationHandler import CsvDataSimulationHandler
-from Utilities.Files.SimulationDataTypes.ParquetSimulationDataHandler import ParquetDataSimulationHandler
+from src.utilities.files.simulation_data_types.json_data_simulation_handler import JsonDataSimulationHandler
+from src.utilities.files.simulation_data_types.csv_data_simulation_handler import CsvDataSimulationHandler
+from src.utilities.files.simulation_data_types.parquet_simulation_data_handler import ParquetDataSimulationHandler
 
 handlers = {'.csv': CsvDataSimulationHandler,
             '.json': JsonDataSimulationHandler,

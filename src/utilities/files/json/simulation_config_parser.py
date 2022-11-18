@@ -1,5 +1,5 @@
-from Utilities import env_variables
-from Utilities.Files.Json.json_utils import read_json, validate_json
+from src.utilities import env_variables
+from src.utilities.files.json.json_utils import read_json, validate_json
 
 
 class SimulationConfigParser:

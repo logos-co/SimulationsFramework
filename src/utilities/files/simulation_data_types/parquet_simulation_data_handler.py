@@ -1,4 +1,4 @@
-from Utilities.Files.SimulationDataTypes.BaseDataSimulationHandler import BaseDataSimulationHandler
+from src.utilities.files.simulation_data_types.base_data_simulation_handler import BaseDataSimulationHandler
 
 
 class ParquetDataSimulationHandler(BaseDataSimulationHandler):
