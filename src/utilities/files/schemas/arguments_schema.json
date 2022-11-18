@@ -1,0 +1,7 @@
+{
+  "type": "object",
+  "properties": {
+    "output-format": {"type":  "string", "enum" :  ["parquet", "csv", "json"]},
+    "output-file": {"type": "string"}
+  }
+}

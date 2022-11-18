@@ -1,4 +1,5 @@
 {
+  "arguments": {"output-format": "csv", "output-file": "test"},
   "simulation": {
     "consensus_settings": {
       "snow_ball": {
