@@ -11,7 +11,7 @@ class SimulationConfigParser:
 
     def read_content(self) -> tuple[dict, dict, dict]:
         # Retrieve raw info
-        json_configuration = read_json(self._file_path)
+        json_configuration = read_json(env_variables.SHARED_FOLDER + self._file_path)
 
         # Split two parts
         arguments_config = json_configuration["arguments"]
@@ -19,8 +19,8 @@ class SimulationConfigParser:
         # plotter_config = json_configuration["plotter"]
 
         # Retrieve valid schemas
-        arguments_json_schema = read_json(env_variables.arguments_schema_path)
-        config_json_schema = read_json(env_variables.configuration_schema_path)
+        arguments_json_schema = read_json(env_variables.ARGUMENTS_SCHEMA_PATH)
+        config_json_schema = read_json(env_variables.CONFIGURATION_SCHEMA_PATH)
         # plotter_json_schema = read_json(env_variables.plotter_schema_path)
 
         # Validate
