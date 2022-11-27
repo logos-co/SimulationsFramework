@@ -19,7 +19,7 @@
                     },
                     "required": ["quorum_size", "sample_size", "decision_threshold"]
                 },
-                "glacier": {
+                "claro": {
                     "type": "object",
                     "properties": {
                         "evidence_alpha": {"type": "number"},
