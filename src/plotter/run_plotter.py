@@ -1,24 +1,24 @@
 # Python Imports
-import typer
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Project Imports
+from src.utilities.env_variables import SHARED_FOLDER
+from src.utilities.files.simulation_data_parser import SimulationDataParser
 
 
-def main(
-        input_data: str = typer.Option(..., "--input-data", "-i"),
-        plot_type: str = typer.Option(..., "--plot-type", "-p"),
-        plot_settings: str = typer.Option(..., "--plot-settings", "-s"),
-):
-    # Parse data file
-    print("")
-    # Accept plot type
+def run_plotter(arguments_config: dict, plotter_config: dict):
+    file_name = f"{arguments_config['output-file']}.{arguments_config['output-format']}"
+    # Read file given in arguments config
+    parser = SimulationDataParser()
+    polars_df = parser.read_content(SHARED_FOLDER + file_name)
 
-    # Handle Plot arguments
+    pandas_df = polars_df.to_pandas()
 
-
-'''
-import foo
-bar = getattr(foo, 'bar')
-result = bar()
-'''
-
-if __name__ == '__main__':
-    typer.run(main)
+    # Loop through all plots given in plotting section
+    for plot, options in plotter_config.items():
+        print(plot)
+        print(options)
+        method = getattr(sns, plot)
+        method(pandas_df, **options["plot_options"])
+        plt.savefig(SHARED_FOLDER + options["save_options"]["name"])
