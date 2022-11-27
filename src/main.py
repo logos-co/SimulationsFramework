@@ -2,6 +2,7 @@
 import typer
 
 # Project Imports
+from src.plotter.run_plotter import run_plotter
 from src.simulation_runner.runner import run_simulation
 from src.utilities.files.json.simulation_config_parser import SimulationConfigParser
 
@@ -16,11 +17,10 @@ def main(
     if run_type == "simulation":
         run_simulation(arguments_config, simulation_config)
     elif run_type == "plotter":
-        # run_plotter()
-        pass
+        run_plotter(arguments_config, plotter_config)
     else:
         run_simulation()
-        # run_plotter()
+        run_plotter()
 
 
 if __name__ == '__main__':
