@@ -1,7 +1,9 @@
 {
   "arguments": {
     "output-format": "csv",
-    "output-file": "test"
+    "output-file": "test",
+    "output-folder": "folder",
+    "number-of-simulations": 3
   },
   "simulation": {
     "consensus_settings": {
