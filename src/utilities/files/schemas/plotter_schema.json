@@ -1,0 +1,66 @@
+{
+  "type": "object",
+  "properties": {
+    "scatterplot": {
+      "type": "object",
+      "properties": {
+        "plot_options": {
+          "type": "object"
+        },
+        "save_options": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "plot_options",
+        "save_options"
+      ]
+    },
+    "lineplot": {
+      "type": "object",
+      "properties": {
+        "plot_options": {
+          "type": "object"
+        },
+        "save_options": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "plot_options",
+        "save_options"
+      ]
+    },
+    "histplot": {
+      "type": "object",
+      "properties": {
+        "plot_options": {
+          "type": "object"
+        },
+        "save_options": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "plot_options",
+        "save_options"
+      ]
+    },
+    "countplot": {
+      "type": "object",
+      "properties": {
+        "plot_options": {
+          "type": "object"
+        },
+        "save_options": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "plot_options",
+        "save_options"
+      ]
+    }
+  },
+  "aditionalProperties": false
+}

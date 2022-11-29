@@ -1,10 +1,13 @@
+# Python Imports
+import polars as pl
+
+# Project Imports
 from src.utilities.files.simulation_data_types.base_data_simulation_handler import BaseDataSimulationHandler
 
 
 class JsonDataSimulationHandler(BaseDataSimulationHandler):
 
-    def load_data(self, path):
-        pass
+    def load_data(self, path: str) -> pl.DataFrame:
+        polars_df = pl.read_json(path)
 
-    def convert_into_dataframe(self):
-        pass
+        return polars_df

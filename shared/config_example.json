@@ -1,5 +1,8 @@
 {
-  "arguments": {"output-format": "csv", "output-file": "test"},
+  "arguments": {
+    "output-format": "csv",
+    "output-file": "test"
+  },
   "simulation": {
     "consensus_settings": {
       "snow_ball": {
@@ -38,7 +41,23 @@
     ],
     "seed": 18042022
   },
-  "plotting": {
-    "test": "test"
+  "plotter": {
+    "countplot": {
+      "plot_options": {
+        "x": "vote"
+      },
+      "save_options": {
+        "name": "test.png"
+      }
+    },
+    "scatterplot": {
+      "plot_options": {
+        "x": "id",
+        "y": "vote"
+      },
+      "save_options": {
+        "name": "test2.png"
+      }
+    }
   }
 }
