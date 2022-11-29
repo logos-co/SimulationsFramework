@@ -12,42 +12,45 @@ In order to build the image, simply run:
 `docker build -t desired_name_of_docker_image .`
 
 In order to tell the container what to do, you need to specify the options in a configuration file, as json.
-More information in:
-
 
 Supported parameters:
 - Run parameters `--run` or `-r`
-  - `both` (default) (to-do)
+  - `both` (will be default) (to-do)
   - `simulation`
-  - `plotter` (to-do)
+  - `plotter`
 - Simulation type `--protocol` or `-p` (to-do)
   - `snow-family` (default, not changeable)
 - Configuration file `--configuration-file` or `-cf`
   - <configuration_file_name.json>
 
-In order to receive the information, plots, and whatever is done inside the container, a shared folder is 
-provided inside this repository. Before running the container, 
+In order to share the information, plots, and so on between the host and the container, a shared folder as example is
+given in this repository. But any path would work for this.
 
-### Example of execution:
+### Explanation of commands:
 
 `docker run --rm -v </your/path/to/SimulationsFramework/shared>:/app/shared <desired_name_of_docker_image> 
 -r <simulation> -cf <configuration_file_name.json>`
 
 The parameters inside `< >` can be changed. Where:
 
-- `docker run --rm` will launch a docker container, and after it finishes, it will automatically destroy itself.
-- `-v </your/path/to/SimulationsFramework/shared>:/app/shared` is the mount folder that will be used to share data 
-between the container and the host. In order to make things easier, the folder inside this repo can be used for that.
-Still, any desired folder can be put here, as long as it is in absolute path. `/app/shared` is a internal framework
+- `docker run --rm` will launch a docker container, and after it finishes, it will automatically destroy itself. The 
+data generated will be saved in the mount folder.
+- `-v </your/path/to/desired/folder>:/app/shared` is the mount folder that will be used to share data 
+between the container and the host. `/app/shared` is a internal framework
 location, so this needs to remain unchanged.
-- `<desired_name_of_docker_image>` is the docker image name previously created.
-- `-r <simulation>` is the type of execution we want. It can be only simulation `simulation`, only plotting `plotter`,
-or simulation and plot `both`. This last option is as default, so if this is the case, it is something that needs to
-be specified.
+- `<desired_name_of_docker_image>` is the docker image name previously created with the `build` command.
+- `-r <simulation>` is the type of execution we want. It can be only simulation with `simulation`, only plotting with 
+`plotter`, or simulation and plot `both` (to-do). 
 - `-cf <configuration_file_name.json>` is the configuration file where we set up what we want to do in the execution. 
-This file needs to be in our shared host folder. 
+This file is **assumed to be in our shared host folder**, so the full path is not needed. If we want the file in a 
+sub-folder like `shared/test_1/config_example.json`, you need to add the relative path from `shared`. In this
+example, it would be `-cf test_1/config_example.json`
 
-So, an example of a command would be:
+### Example of use:
+
+So, assuming we are in the root of this repository, an example of use would be:
+
+`docker build -t simulation-framework .`
 
 `docker run --rm -v /mnt/d/Projects/SimulationsFramework/shared:/app/shared simulation-framework 
 -r simulation -cf config_example.json`
