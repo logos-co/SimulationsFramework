@@ -13,10 +13,13 @@
     "output-file": {
       "type": "string"
     },
+    "output-folder": {
+      "type": "string"
+    },
     "number-of-simulations" : {
       "type": "number"
     }
   },
-  "required": ["output-format", "output-file", "number-of-simulations"],
-  "aditionalProperties": false
+  "required": ["output-file", "number-of-simulations"],
+  "additionalProperties": false
 }
