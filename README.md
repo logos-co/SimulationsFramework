@@ -28,7 +28,7 @@ given in this repository. But any path would work for this.
 
 ### Explanation of commands:
 
-`docker run --rm -v </your/path/to/SimulationsFramework/shared>:/app/shared <desired_name_of_docker_image> 
+`docker run --rm -v </your/path/to/desired/folder>:/app/shared <desired_name_of_docker_image> 
 -r <simulation> -cf <configuration_file_name.json>`
 
 The parameters inside `< >` can be changed. Where:
