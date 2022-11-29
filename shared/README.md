@@ -24,11 +24,7 @@ by the simulation in the manner output-file + "_seedUsed." + output-format.
 
 **Type**: *string*
 
-**Required**: *No*
-
-**Default value**: `parquet`
-
-
+**Required**: *Yes*
 
 **Example**:
 ```json
