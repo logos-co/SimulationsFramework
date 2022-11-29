@@ -3,7 +3,7 @@ import typer
 
 # Project Imports
 from src.plotter.run_plotter import run_plotter
-from src.simulation_runner.runner import run_simulation
+from src.simulation_runner.runner import SimulationRunner
 from src.utilities.files.json.simulation_config_parser import SimulationConfigParser
 
 
@@ -15,11 +15,13 @@ def main(
     arguments_config, simulation_config, plotter_config = parser.read_content()
     # Calls depending on json config
     if run_type == "simulation":
-        run_simulation(arguments_config, simulation_config)
+        runner = SimulationRunner(arguments_config, simulation_config)
+        runner.run_simulation()
     elif run_type == "plotter":
         run_plotter(arguments_config, plotter_config)
     else:
-        run_simulation()
+        runner = SimulationRunner(arguments_config, simulation_config)
+        runner.run_simulation()
         run_plotter()
 
 
